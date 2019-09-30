@@ -1,11 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const { CleanWebpackPlugin }  = require('clean-webpack-plugin')
+
 
 module.exports = {
     entry: "./src/index.tsx",
     output: {
-        filename: "bundle.js",
+        filename: "bundle.[hash].js",
         path: __dirname + "/dist"
     },
 
@@ -33,6 +35,7 @@ module.exports = {
       port: 9000
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'Typescript Learning',
         template: './index.html'  // 模板
